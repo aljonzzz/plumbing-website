@@ -12,7 +12,7 @@ export default function NotesField({ value, onChange }: Props) {
         value={value}
         onChange={onChange}
         rows={4}
-        placeholder="Anything we should know?"
+        placeholder="Anything we should know? or any specific service you need..."
         className="w-full p-3 form-field resize-none"
       />
     </div>
