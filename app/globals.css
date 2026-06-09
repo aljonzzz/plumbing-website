@@ -1,26 +1,315 @@
 @import "tailwindcss";
 
+/* =========================================================
+   ROOT DESIGN SYSTEM
+========================================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* BRAND COLORS */
+  --color-primary: 254, 108, 1;
+
+  --color-secondary: 255, 255, 255;
+  --color-secondary-variant: 250, 250, 250;
+  --color-accent: ;
+
+  --color-primary-hover: 212, 185, 32;
+  --color-primary-light: #f7efb8;
+
+
+  /* BACKGROUNDS */
+  --color-bg: 255 255 255;
+  --color-bg-variant: 250, 250, 250;
+  --color-bg-secondary: 238, 209, 55;
+  --color-background: #ffffff;
+  --color-surface: #f8f8f8;
+  --color-surface-2: #efefef;
+  --color-card: 255 255 255;
+
+  --color-bg-footer: 235, 242, 255;
+
+
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+
+  /* BUTTONS */
+  --nav-btn: 255, 255, 255;
+
+
+  /* TEXT COLORS */
+  --color-text: 36, 59, 83;
+  --color-text-light: #6b7280;
+  --color-text-white: #ffffff;
+  --color-text-muted: 107 114 128;
+  --color-link: 60, 99, 139;
+
+
+  --color-text-accent: 19, 87, 160;
+  --footer-link-hover: 23, 23, 23;
+
+
+  /* BORDER COLORS */
+  --color-border: 200, 200, 200;
+  --color-border-faq: 220, 220, 220;
+
+
+  /* STATUS COLORS */
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+
+
+  /* SHADOWS */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+
+  /* RADIUS */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* FONT */
+  --font-sans: Arial, Helvetica, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
+.animate-fade-in {
+  animation: fade-in 0.4s ease;
+}
+
+/* =========================================================
+   BASE STYLES
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+.bg-base {
+  background: rgb(var(--bg-base));
+}
+
+.bg-base-variant {
+  background: rgb(var(--color-bg-variant));
+}
+
+.bg-base-footer {
+  background: rgb(var(--color-bg-footer));
+}
+
+.section-spacing {
+  @apply max-w-6xl mx-auto;
+}
+
+.undraggable {
+  -webkit-user-drag: none;
+-webkit-user-drag: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+.btn-primary {
+  background: rgb(var(--color-primary));
+}
+
+.btn-primary:hover {
+  background: rgb(var(--color-primary));
+}
+
+.btn-secondary {
+  border: 2px solid rgb(var(--color-primary));
+  color: var(--color-text);
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgb(var(--color-primary));
+  color: white;
+}
+
+.btn-outline {
+  border: 2px solid rgb(var(--color-primary));
+  color: rgb(var(--color-text));
+
+}
+
+.btn-outline:hover {
+  background: rgb(var(--color-primary));
+  color: white;
+}
+
+.button-hero {
+  background: white;
+  color: rgb(var(--color-primary));
+  border: 1px solid rgba(var(--color-primary));
+}
+
+
+/* =========================================================
+   BORDERS
+========================================================= */
+
+.button-border {
+  @apply border-[#b8b8b8]/60;
+}
+
+
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.container-custom {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+.bg-card {
+  background: rgb(var(--color-card));
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-sm);
+}
+
+.card {
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.form-field {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgb(var(--color-border));
+  transition: all 0.2s ease;
+}
+
+.form-field:focus {
+  outline: none;
+  border-color: rgb(var(--color-primary));
+}
+
+.text-accent {
+  color: rgb(var(--color-primary));
+}
+
+.text-muted {
+  @apply select-none;
+  color: rgb(var(--color-text-muted));
+}
+
+.footer-link-hover:hover {
+  color: rgb(var(--footer-link-hover));
+}
+
+.text-dark {
+  color: rgb(var(--color-text));
+}
+
+.text-accent {
+  color: rgb(var(--color-text-accent));
+}
+
+.text-link {
+  color: rgb(var(--color-link));
+  transition: color 0.2s ease;
+}
+
+.text-link:hover,
+.text-link:active {
+  color: rgb(var(--color-primary));
+}
+
+
+
+.text-footer-link {
+  @apply text-gray-300;
+  transition: color 0.2s ease;
+}
+
+.text-footer-link:hover,
+.text-footer-link:active {
+  color: white;
+}
+
+
+
+/* =========================================================
+   TEXT SIZES
+========================================================= */
+
+.heading-1 {
+  @apply text-4xl md:text-5xl;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.heading-2 {
+  @apply text-3xl md:text-4xl;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.heading-3 {
+  @apply text-xl;
+
+  line-height: 1.3;
+}
+
+.heading-4 {
+  @apply text-lg;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.subtitle {
+  @apply text-sm leading-relaxed;
+  color: var(--color-text-light);
+}
+
+.body {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.caption {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.title-brand {
+  @apply text-2xl;
+  font-weight: 700;
 }
