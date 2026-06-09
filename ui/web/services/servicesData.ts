@@ -18,7 +18,7 @@ export const servicesData = [
   {
     slug: "hot-water-systems",
     title: "Hot Water Systems",
-    images: ["/img/hot-water.jpg", "/img/hot-water.jpg"],
+    images: ["/img/hot-water.jpg"],
     description:
       "Expert installation, repair, and replacement of electric, gas, and solar hot water systems for reliable everyday performance.",
   },

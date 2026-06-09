@@ -8,11 +8,30 @@ export async function POST(req: Request) {
       email,
       contact,
       address,
-      service,
+      service = [],
       preferredDate,
       preferredTime,
       notes,
     } = await req.json();
+
+    // basic validation
+    if (
+      !name ||
+      !email ||
+      !contact ||
+      !address ||
+      !service.length ||
+      !preferredDate ||
+      !preferredTime
+    ) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Missing required fields",
+        },
+        { status: 400 }
+      );
+    }
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -22,11 +41,13 @@ export async function POST(req: Request) {
       },
     });
 
-    // Email to business owner
+    const serviceList = service.join(", ");
+
+    // EMAIL TO OWNER
     await transporter.sendMail({
       from: `"PipeWise Plumbing" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
-      subject: `New Booking - ${service}`,
+      subject: `New Booking - ${serviceList}`,
       html: `
         <h2>New Booking Request</h2>
 
@@ -37,7 +58,11 @@ export async function POST(req: Request) {
 
         <hr />
 
-        <p><strong>Service:</strong> ${service}</p>
+        <p><strong>Services:</strong></p>
+        <ul>
+          ${service.map((item: string) => `<li>${item}</li>`).join("")}
+        </ul>
+
         <p><strong>Date:</strong> ${preferredDate}</p>
         <p><strong>Time:</strong> ${preferredTime}</p>
 
@@ -46,33 +71,49 @@ export async function POST(req: Request) {
       `,
     });
 
-    // Auto reply to customer
+    // EMAIL TO CUSTOMER (IMPROVED)
     await transporter.sendMail({
       from: `"PipeWise Plumbing" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: "Booking Request Received",
+      subject: "Booking Request Received - PipeWise Plumbing",
       html: `
-        <h2>Thank You for Booking</h2>
+        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+          <h2 style="color:#fe6c01;">Thank You for Your Booking</h2>
 
-        <p>Hello ${name},</p>
+          <p>Hello <strong>${name}</strong>,</p>
 
-        <p>
-          We have successfully received your booking request.
-        </p>
+          <p>
+            We’ve successfully received your booking request.
+            Our team will review your request and contact you shortly to confirm your appointment.
+          </p>
 
-        <p>
-          Our team will contact you shortly to confirm your appointment.
-        </p>
+          <hr />
 
-        <hr />
+          <h3>Booking Summary</h3>
 
-        <p><strong>Service:</strong> ${service}</p>
-        <p><strong>Date:</strong> ${preferredDate}</p>
-        <p><strong>Time:</strong> ${preferredTime}</p>
+          <p><strong>Services Requested:</strong></p>
+          <ul>
+            ${service.map((item: string) => `<li>${item}</li>`).join("")}
+          </ul>
 
-        <br />
+          <p><strong>Date:</strong> ${preferredDate}</p>
+          <p><strong>Time:</strong> ${preferredTime}</p>
 
-        <p>Thank you for choosing PipeWise Plumbing.</p>
+          <p><strong>Contact:</strong> ${contact}</p>
+          <p><strong>Address:</strong> ${address}</p>
+
+          ${
+            notes
+              ? `<p><strong>Notes:</strong> ${notes}</p>`
+              : ""
+          }
+
+          <br />
+
+          <p>
+            Thank you for choosing <strong>PipeWise Plumbing</strong> 🚰
+          </p>
+        </div>
       `,
     });
 
@@ -88,9 +129,7 @@ export async function POST(req: Request) {
         success: false,
         message: "Failed to submit booking",
       },
-      {
-        status: 500,
-      }
+      { status: 500 }
     );
   }
 }

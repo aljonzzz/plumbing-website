@@ -25,17 +25,24 @@ const BookingForm: React.FC<Props> = ({
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    contact: "",
-    address: "",
-    service: "",
-    preferredDate: "",
-    preferredTime: "",
-    notes: "",
-  });
-
+const [form, setForm] = useState({
+  name: "",
+  email: "",
+  contact: "",
+  address: "",
+  service: [] as string[],
+  preferredDate: "",
+  preferredTime: "",
+  notes: "",
+});
+const handleServicesChange = (
+  services: string[]
+) => {
+  setForm((prev) => ({
+    ...prev,
+    service: services,
+  }));
+};
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement |
@@ -95,7 +102,7 @@ const BookingForm: React.FC<Props> = ({
           email: "",
           contact: "",
           address: "",
-          service: "",
+service: [],
           preferredDate: "",
           preferredTime: "",
           notes: "",
@@ -148,10 +155,10 @@ const BookingForm: React.FC<Props> = ({
         onChange={handleChange}
       />
 
-      <ServiceField
-        value={form.service}
-        onChange={handleChange}
-      />
+<ServiceField
+  value={form.service}
+  onChange={handleServicesChange}
+/>
 
       <DateField
         value={form.preferredDate}

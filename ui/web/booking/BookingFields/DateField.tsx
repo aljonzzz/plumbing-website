@@ -4,7 +4,6 @@ type Props = {
 };
 
 export default function DateField({ value, onChange }: Props) {
-  // get today's date in YYYY-MM-DD format
   const today = new Date().toISOString().split("T")[0];
 
   return (
@@ -22,6 +21,10 @@ export default function DateField({ value, onChange }: Props) {
         required
         className="w-full p-3 form-field"
       />
+
+      <p className="text-sm text-muted mt-1">
+        Choose your preferred appointment date
+      </p>
     </div>
   );
 }
