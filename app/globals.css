@@ -103,7 +103,7 @@ body {
 }
 
 .bg-base {
-  background: rgb(var(--bg-base));
+  @apply bg-[#eef1f5] ;
 }
 
 .bg-base-variant {
@@ -226,7 +226,7 @@ body {
 }
 
 .text-muted {
-  @apply select-none;
+  @apply select-none text-sm md:text-base;
   color: rgb(var(--color-text-muted));
 }
 
@@ -266,6 +266,8 @@ body {
 
 
 
+
+
 /* =========================================================
    TEXT SIZES
 ========================================================= */
@@ -277,13 +279,13 @@ body {
 }
 
 .heading-2 {
-  @apply text-3xl md:text-4xl;
+  @apply text-2xl md:text-3xl;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .heading-3 {
-  @apply text-xl;
+  @apply text-lg;
 
   line-height: 1.3;
 }

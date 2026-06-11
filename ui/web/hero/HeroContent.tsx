@@ -20,7 +20,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ onOpenBooking }) => {
       </h1>
 
       {/* Description */}
-      <p className="text-white text-lg">
+      <p className="text-white body">
         Fast and reliable plumbing, drain cleaning, heating
         & cooling services available 24/7.
       </p>
@@ -36,7 +36,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ onOpenBooking }) => {
           className="w-full sm:w-auto py-3 px-6 flex items-center justify-center gap-2"
         >
           <FiCalendar className="shrink-0 text-lg" />
-          Schedule an Appointment
+          Request a Free Quote
         </Button>
 
         <a href="tel:+557483483934">

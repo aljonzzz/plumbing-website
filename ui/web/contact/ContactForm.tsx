@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import SuccessMessage from "../../components/SuccessMessage";
 import InputField from "./InputField";
 import TextareaField from "./TextareaField";
-import SuccessMessage from "../booking/SuccessMessage";
 
 type FormData = {
   name: string;

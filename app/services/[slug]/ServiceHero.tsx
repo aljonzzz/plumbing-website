@@ -68,7 +68,7 @@ const ServiceHero = ({ service }: Props) => {
             h-[350px]
             md:h-[600px]
             object-cover
-            rounded-xl
+            card
             select-none
           "
         />

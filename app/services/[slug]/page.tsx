@@ -1,15 +1,15 @@
 import { notFound } from "next/navigation";
 
-import Nav from "@/ui/web/navbar/Nav";
 import Footer from "@/ui/web/footer/Footer";
+import Nav from "@/ui/web/navbar/Nav";
 
-import { servicesData } from "@/ui/web/services/servicesData";
+import { servicesData } from "@/ui/components/servicesData";
 
-import ServiceHero from "./ServiceHero";
+import OtherServices from "./OtherServices";
 import ServiceContent from "./ServiceContent";
+import ServiceHero from "./ServiceHero";
 import ServiceIncluded from "./ServiceIncluded";
 import ServiceWhyChoose from "./ServiceWhyChoose";
-import OtherServices from "./OtherServices";
 
 type Props = {
   params: Promise<{
@@ -38,7 +38,7 @@ export default async function ServicePage({
     <>
       <Nav />
 
-      <main className="py-4 md:py-8 px-3 md:px-6">
+      <main className="pt-10 md:pt-15  pb-20  px-3 md:px-6">
         <div className="section-spacing">
           <ServiceHero service={service} />
 

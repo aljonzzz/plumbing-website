@@ -1,6 +1,6 @@
+import { servicesData } from "@/ui/components/servicesData";
 import Link from "next/link";
 import React from "react";
-import { servicesData } from "@/ui/web/services/servicesData";
 
 const FooterServices: React.FC = () => {
   return (

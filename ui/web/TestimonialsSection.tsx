@@ -24,7 +24,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className=" bg-[#eef1f5] px-3 md:px-6 " >
+    <section className=" bg-base px-3 md:px-6 pt-15 " >
       <div className="container mx-auto section-spacing">
         <div className="max-w-2xl mb-8 text-left">
           <p className="text-muted heading-3  tracking-wider">

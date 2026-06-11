@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import ServiceLink from "./ServiceLink";
 
 type Props = {
   title: string;
@@ -15,36 +16,19 @@ const ServiceCard: React.FC<Props> = ({
   slug,
 }) => {
   return (
-    <div
-      className="
-        bg-white
-        card
-        overflow-hidden
-        shadow-sm
-        border
-        border-gray-200
-        flex
-        flex-col
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        hover:shadow-lg
-      "
-    >
+    <div className="
+      bg-white card overflow-hidden shadow-sm border border-gray-200
+      flex flex-col transition-all duration-300
+      hover:-translate-y-1 hover:shadow-lg
+    ">
+
       {/* Image */}
       <Link href={`/services/${slug}`}>
         <div className="relative h-64 overflow-hidden cursor-pointer">
           <img
             src={images[0]}
             alt={title}
-            className="
-              w-full
-              h-full
-              object-cover
-              transition-transform
-              duration-500
-              hover:scale-105
-            "
+            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
             draggable={false}
           />
         </div>
@@ -52,7 +36,7 @@ const ServiceCard: React.FC<Props> = ({
 
       {/* Content */}
       <div className="p-5 flex flex-col flex-1">
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">
+        <h3 className="heading-3 font-semibold text-dark mb-3">
           {title}
         </h3>
 
@@ -60,38 +44,9 @@ const ServiceCard: React.FC<Props> = ({
           {description}
         </p>
 
-        <Link
-          href={`/services/${slug}`}
-          className="
-            mt-6
-            mx-auto
-            inline-flex
-            items-center
-            justify-center
-            px-6
-            py-2
-            text-sm
-            rounded-full
-            border
-            border-[rgb(var(--color-primary))]
-            text-[rgb(var(--color-primary))]
-            transition-all
-            duration-200
-            shadow-sm
-
-            hover:bg-[rgb(var(--color-primary))]
-            hover:text-white
-            hover:scale-[1.03]
-
-            active:bg-[rgb(var(--color-primary))]
-            active:text-white
-            active:scale-95
-            active:translate-y-1
-            active:shadow-none
-          "
-        >
-          Request Service
-        </Link>
+        <ServiceLink slug={slug}>
+          View Service
+        </ServiceLink>
       </div>
     </div>
   );

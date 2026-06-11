@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import DesktopNav from "./DesktopNav";
 import Logo from "./Logo";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "./MobileMenu/MobileMenu";
 
 type NavProps = {
   onOpenBooking?: () => void;

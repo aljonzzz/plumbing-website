@@ -11,7 +11,9 @@ import Contact from "@/ui/web/contact/ContactSection";
 import Footer from "@/ui/web/footer/Footer";
 import PromoBanner from "@/ui/web/PromoBanner";
 import TestimonialsSection from "@/ui/web/TestimonialsSection";
-import BookingModal from "@/ui/web/booking/BookingModal";
+import WhyChooseUsSection from "@/ui/web/WhyChooseUs";
+import BookingModal from "@/ui/web/free-quote/QuoteModal";
+
 
 export default function UsersPage() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -34,10 +36,11 @@ export default function UsersPage() {
 
 
 
-<section id="services" className="relative z-0">
-  <Services />
-</section>
 
+
+
+<WhyChooseUsSection  />
+<PromoBanner onOpenBooking={openBooking} />
 <TestimonialsSection  />
 
 
@@ -46,13 +49,7 @@ export default function UsersPage() {
           <Faq />
         </section>
 
-        <section id="about">
-          <About />
-        </section>
 
-        <section id="contact">
-          <Contact />
-        </section>
 
         <Footer />
       </main>

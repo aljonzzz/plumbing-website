@@ -53,7 +53,7 @@ const FeatureCard: React.FC = () => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <p className="text-white text-base leading-relaxed min-h-[72px] flex items-center">
+      <p className="text-white body leading-relaxed min-h-[72px] flex items-center">
         {messages[active]}
       </p>
 

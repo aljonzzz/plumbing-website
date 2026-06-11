@@ -4,7 +4,7 @@ import { faqData } from "./FAQData";
 
 const FAQSection: React.FC = () => {
   return (
-    <section className="bg-[#eef1f5] py-16 px-3 md:px-6">
+    <section className="bg-base py-16 px-3 md:px-6">
       <div className="section-spacing">
         {/* TITLE */}
         <div className="mb-8">
