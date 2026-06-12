@@ -9,8 +9,8 @@ interface Props {
 
 const ServiceContent = ({ service }: Props) => {
   return (
-    <div className="mt-6 space-y-6">
-      <p className="text-muted">
+    <div className="mt-6 space-y-6 ">
+      <p className="text-muted body">
         {service.description}
       </p>
 

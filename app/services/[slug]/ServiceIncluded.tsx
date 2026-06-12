@@ -11,12 +11,12 @@ const includedItems = [
 
 const ServiceIncluded = () => {
   return (
-    <div className="mt-10 bg-card p-6 rounded-xl">
+    <div className="mt-10 ">
       <h2 className="heading-3 mb-4 text-dark">
         What's Included
       </h2>
 
-      <ul className="space-y-3 text-muted">
+      <ul className="space-y-2 text-muted body">
         {includedItems.map((item) => (
           <li
             key={item}
